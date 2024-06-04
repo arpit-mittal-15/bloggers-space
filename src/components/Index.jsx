@@ -7,7 +7,8 @@ export function Index(){
       <span className="text-xl">Create a unique and beautiful blog easily.</span>
       <div className="bg-red-500 w-fit text-center py-3 my-5 rounded-md hover:scale-[1.1] transition-all duration-300">
         <Link to="/sign-in">
-          <span className="p-10">CREATE YOUR BLOG</span></Link>
+          <span className="p-10">CREATE YOUR BLOG</span>
+        </Link>
       </div>
     </div>
   )

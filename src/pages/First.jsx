@@ -1,8 +1,10 @@
-import { useEffect } from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Index } from '../components/Index'
+import { LogIn } from '../components/LogIn'
+import { SignIn } from "../components/SignIn";
 
 export function First(){
-
   return(
     <div id="firstPage" className="h-full grid grid-flow-row grid-rows-[10%_auto_18%] bg-[url('./assets/index-background.jpeg')] bg-cover">
       <header className="box-border text-white px-10 flex flex-row flex-nowrap justify-between items-center">

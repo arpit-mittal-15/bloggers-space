@@ -804,6 +804,23 @@ video {
   transition-duration: 300ms;
 }
 
+.secimg{
+  position: relative;
+  right: 10px;
+}
+
+.secimg img{
+  width: 30vw;
+}
+
+.secimg video{
+  height: 384px;
+  width: 242px;
+  position: absolute;
+  right: ;
+  top: ;
+}
+
 .after\:absolute::after {
   content: var(--tw-content);
   position: absolute;
@@ -880,4 +897,3 @@ video {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-
