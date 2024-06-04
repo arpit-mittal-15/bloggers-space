@@ -1,21 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-
-
-.secimg{
-  position: relative;
-  right: 10px;
-}
-.secimg img{
-  width: 30vw;
-}
-.secimg video{
-  height: 384px;
-  width: 242px;
-  position: absolute;
-  right: ;
-  top: ;
-}
