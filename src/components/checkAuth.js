@@ -1,23 +1,40 @@
-export function checkAuth(username){
-    // Split cookie string and get all individual name=value pairs in an array
+export function checkAuth(uid){
+
+  return new Promise((resolve, reject) => {
+    let token = "";
     let cookieArr = document.cookie.split(";");
-    
-    // Loop through the array elements
     for(let i = 0; i < cookieArr.length; i++) {
-        let cookiePair = cookieArr[i].split("=");
+      let cookiePair = cookieArr[i].split("=");
         
-        /* Removing whitespace at the beginning of the cookie name
-        and compare it with the given string */
-        if(username == cookiePair[0].trim()) {
-            // Decode the cookie value and return
-            const value = decodeURIComponent(cookiePair[1]);
-
-            if(value == "John doe"){
-              return true
-            }
-        }
+      if(uid === cookiePair[0].trim()) {
+        token = decodeURIComponent(cookiePair[1]);
+      }
     }
-    // Return null if not found
-    return false;
-
+    const cookie = {"uid": token};
+    
+    fetch('http://localhost:8000/api/user/auth',{
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cookie),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.status === "not authenticated"){
+        console.log("authentication failed");
+        resolve(false);
+      } else if(data.status === 'authenticated'){
+        console.log("Authenticated");
+        resolve(true);
+      } else {
+        console.log("Unknown authentication status");
+        resolve(false);
+      }
+    })
+    .catch(error => {
+      console.error('Error during authentication check:', error);
+      resolve(false);
+    });
+  });
 }

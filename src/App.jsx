@@ -17,10 +17,8 @@ import { Main } from './components/Main.jsx';
 export default function App(){
 
   const [loggedIn, setLoggedIn] = useState(false);
-
-
   useEffect(() => {
-    setLoggedIn(checkAuth("username"));
+    checkAuth("uid").then(value => setLoggedIn(value));
   },[])
 
   return(
