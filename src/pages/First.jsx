@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom";
-import { Index } from '../components/Index'
-import { LogIn } from '../components/LogIn'
-import { SignIn } from "../components/SignIn";
+import { Outlet, Link} from "react-router-dom";
 
 export function First(){
   return(

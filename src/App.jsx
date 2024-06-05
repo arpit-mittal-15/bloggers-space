@@ -1,5 +1,4 @@
-import { Outlet } from "react-router-dom";
-import { useEffect, useState, createContext} from 'react';
+import { useEffect, useState} from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,6 +12,7 @@ import { LogIn } from "./components/LogIn.jsx";
 import { Index } from "./components/Index.jsx";
 import { PageNotFound } from "./pages/PageNotFound.jsx";
 import { checkAuth } from "./components/checkAuth.js";
+import { Main } from './components/Main.jsx';
 
 export default function App(){
 
@@ -23,19 +23,13 @@ export default function App(){
     setLoggedIn(checkAuth("username"));
   },[])
 
-  // useEffect(()=> {
-  //   checkCookies,
-  //   authenticationFetching,
-  //   if authenticate then main page otherwise indexpage
-  // },[])
-
   return(
       <div className="h-screen w-[101vw]">
         <Router>
           {loggedIn && 
             <Routes>
               <Route path="/" element={<Home/>}>
-                <Route path="/" element={<Home/>}/>
+                <Route path="/" element={<Main/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="*" element={<PageNotFound/>}/>
               </Route>
