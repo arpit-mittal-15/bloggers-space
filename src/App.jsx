@@ -1,4 +1,4 @@
-import { useEffect, useState} from 'react';
+import { useEffect, useState, createContext, useContext} from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,25 +13,48 @@ import { Index } from "./components/Index.jsx";
 import { PageNotFound } from "./pages/PageNotFound.jsx";
 import { checkAuth } from "./components/checkAuth.js";
 import { Main } from './components/Main.jsx';
+import { UserContext } from './components/hooks/UserContext.js';
+import { NewBlog } from './components/NewBlog.jsx';
+import { Explore } from './components/Explore.jsx';
 
 export default function App(){
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState({
+    id:0,
+    name:"",
+    email:""
+  })
+  const {setUserData} = useContext(UserContext);
+
   useEffect(() => {
-    checkAuth("uid").then(value => setLoggedIn(value));
+    checkAuth("uid").then(value => {
+      if(value == false) {setLoggedIn(false)}
+      else{
+        setLoggedIn(true);
+        const userDetails = JSON.parse(value);
+        setUser({id: userDetails._id, name: userDetails.name, email: userDetails.email})
+        setUserData({id: userDetails._id, name: userDetails.name, email: userDetails.email})
+      }
+    });
   },[])
 
   return(
       <div className="h-screen w-[101vw]">
         <Router>
           {loggedIn && 
+          <UserContext.Provider value={{...user, setUser: setUser}}>
             <Routes>
               <Route path="/" element={<Home/>}>
-                <Route path="/" element={<Main/>}/>
+                <Route path="/" element={<Main/>}>
+                  <Route path='/' element={<Explore/>}/>
+                  <Route path='/new-blog' element={<NewBlog/>}/>
+                </Route>
                 <Route path="/about" element={<About/>}/>
                 <Route path="*" element={<PageNotFound/>}/>
               </Route>
             </Routes>
+          </UserContext.Provider>
           }
           {!loggedIn && 
             <Routes>

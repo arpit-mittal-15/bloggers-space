@@ -35,17 +35,20 @@ async function handleUserLogin(req, res){
   return res.json({"uid": token});
 };
 
-function checkAuth(req, res){
+async function checkAuth(req, res){
 
   const token = req.body.uid;
-  console.log(token)
   if(!token) return res.json({"status": "not authenticated"});
   const auth = jwt.verify(token, "myblogspace");
 
-  if(auth) return res.json({"status":"authenticated"});
-  return res.json({"status": "not authenticated"})
+  if(!auth) {
+    return res.json({"status": "not authenticated"})
+  }
+  else{
+    const user = JSON.stringify(auth)
+    return res.json(user);
+  }
 };
-
 
 module.exports = {
   handleUserSignup,

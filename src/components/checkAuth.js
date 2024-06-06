@@ -24,9 +24,9 @@ export function checkAuth(uid){
       if(data.status === "not authenticated"){
         console.log("authentication failed");
         resolve(false);
-      } else if(data.status === 'authenticated'){
-        console.log("Authenticated");
-        resolve(true);
+      } else if(data){
+        console.log(data)
+        resolve(data);
       } else {
         console.log("Unknown authentication status");
         resolve(false);
