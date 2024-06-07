@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors")
+const cookieParser = require("cookie-parser");
 const { connectToMongoDB } = require("./connect");
 
 const userRoute = require("./routes/user")
@@ -14,6 +15,7 @@ connectToMongoDB("mongodb://127.0.0.1:27017/bloggers-space")
 app.use(cors({origin:"http://localhost:5173"}));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
+app.use(cookieParser())
 
 app.use("/api/user", userRoute)
 app.use("/api/blog", blogRoute)

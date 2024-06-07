@@ -16,6 +16,7 @@ import { Main } from './components/Main.jsx';
 import { UserContext } from './components/hooks/UserContext.js';
 import { NewBlog } from './components/NewBlog.jsx';
 import { Explore } from './components/Explore.jsx';
+import { MyBlog } from './components/MyBlog.jsx';
 
 export default function App(){
 
@@ -49,6 +50,7 @@ export default function App(){
                 <Route path="/" element={<Main/>}>
                   <Route path='/' element={<Explore/>}/>
                   <Route path='/new-blog' element={<NewBlog/>}/>
+                  <Route path='/my-blog' element={<MyBlog/>}/>
                 </Route>
                 <Route path="/about" element={<About/>}/>
                 <Route path="*" element={<PageNotFound/>}/>

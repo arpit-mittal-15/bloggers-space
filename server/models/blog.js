@@ -7,7 +7,11 @@ const blogSchema = new mongoose.Schema({
   },
   content: {
     type: String,
-  }
+  },
+  postedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+  },
 }, { timestamps: true});
 
 const Blog = mongoose.model("blog", blogSchema);

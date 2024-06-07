@@ -1,17 +1,29 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { createNewBlog } from "./createNewBlog.js";
+import { UserContext } from "./hooks/UserContext.js";
+import { useNavigate } from "react-router-dom";
 
 export function NewBlog(){
+
+  const userContextData = useContext(UserContext);
+  const navigate = useNavigate();
 
   const [blogData, setBlogData] = useState({
     title: "",
     content: "",
+    id: userContextData.id
   })
 
   const handleBlogSubmit = (e) => {
     e.preventDefault();
-    createNewBlog(blogData);
-    console.log("Blog Created")
+    createNewBlog(blogData).then(result => {
+      if(result == true){
+        navigate("/my-blog")
+      }
+      else{
+        console.log("error in creating new blog")
+      }
+    })
   }
 
   return(

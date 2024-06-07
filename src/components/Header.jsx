@@ -18,8 +18,8 @@ export function Header(){
             </div>
           </Link>
           <ul className="flex flex-row gap-5 text-sm px-5">
-            <li>Home</li>
-            <li>Blogs</li>
+            <Link to="/"><li>Home</li></Link>
+            <Link to="/my-blog"><li>Blogs</li></Link>
             <li>Msgs</li>
             <li>Notif</li>
           </ul>
