@@ -1,8 +1,40 @@
+import { useEffect, useState } from "react"
+import { getUsername } from "./getUsername"
+import { Link } from 'react-router-dom'
+
 export function MyBlogsBlog({blogContent}){
+
+  const [blogCreator, setBlogCreator] = useState({
+    name: "",
+    email: "",
+  })
+
+  useEffect(() => {
+    getUsername(blogContent.postedBy).then(value => {
+      setBlogCreator({name: value.name, email: value.email})
+    })
+  });
+
   return (
     <div className="p-4 mb-5 bg-white rounded-lg relative">
-      <div id="myBlogsBlogTitle" className="text-2xl font-semibold mb-2">{blogContent[0]}</div>
-      <div id="myBlogsBlogContent" className="max-h-[110px] text-lg overflow-hidden text-ellipsis after:content-['Read_more..'] after:block after:h-[40px] after:w-[150px] after:bg-white after:absolute after:bottom-0 after:right-2 after:text-slate-500 after:text-right after:px-3">{blogContent[1]}</div>
+      <div id="myBlogsBlogTitle" className="text-2xl font-semibold mb-2">{blogContent.title}</div>
+      <div id="myBlogsBlogContent" className="max-h-[110px] text-lg overflow-hidden mb-3">{blogContent.content}</div>
+      <div className="relative bottom-[-7px] text-sm flex justify-between">
+        <div id="blogDetails" className="flex items-center gap-5">
+          <span className="flex align-middle gap-2">
+            <svg height={17} width={17} viewBox="0 0 512 512" className="inline"><path fill="red" fillOpacity={.9} d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>{blogContent.likes.length}
+          </span>
+          <span className="flex align-middle gap-2">
+            <svg height={17} width={17} viewBox="0 0 512 512" className="inline"><path fill="red" fillOpacity={.9} d="M512 240c0 114.9-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6C73.6 471.1 44.7 480 16 480c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4l0 0 0 0 0 0 0 0 .3-.3c.3-.3 .7-.7 1.3-1.4c1.1-1.2 2.8-3.1 4.9-5.7c4.1-5 9.6-12.4 15.2-21.6c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208z"/></svg>{blogContent.comments}
+          </span>
+          <span className="flex flex-row items-center gap-2">
+            <span className="text-base font-semibold">{blogCreator.name}</span>
+            <span className=""><svg height={5} width={5} viewBox="0 0 512 512"><path fill="red" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/></svg></span>
+            <span className="text-xs">{blogContent.createdAt.slice(0,10)}</span>
+          </span>
+        </div>
+        <Link to={`/blog/${blogContent.id}`}><div className="text-red-500">Read more..</div></Link>
+      </div>
     </div>
   )
 }

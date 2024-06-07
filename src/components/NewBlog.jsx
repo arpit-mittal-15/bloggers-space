@@ -18,7 +18,7 @@ export function NewBlog(){
     e.preventDefault();
     createNewBlog(blogData).then(result => {
       if(result == true){
-        navigate("/my-blog")
+        navigate("/my-blogs")
       }
       else{
         console.log("error in creating new blog")
@@ -29,7 +29,7 @@ export function NewBlog(){
   return(
     <div className="box-border mr-5 my-5">
       <form className="flex flex-col items-center gap-3">
-        <input type="text" name="title" id="title" placeholder="Write the title here.." className="w-[98%] h-[50px] m-auto px-2 border-b-[1px] border-slate-400 rounded-[10px] focus:outline-none" value={blogData.title} onChange={(e) => {
+        <input type="text" name="title" id="title" placeholder="Write the title here.." className="w-[98%] h-[50px] m-auto px-2 border-b-[1px] border-slate-400 rounded-[10px] focus:outline-none first-letter:capitalize" value={blogData.title} onChange={(e) => {
           setBlogData((currentState) => ({...currentState, title: e.target.value}))
         }}/>
         <textarea name="content" id="content" placeholder="Write the content here.." className="w-[98%] min-h-[360px] m-auto p-2 rounded-[10px] focus:outline-none" value={blogData.content} onChange={(e) => {

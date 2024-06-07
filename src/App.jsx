@@ -17,6 +17,7 @@ import { UserContext } from './components/hooks/UserContext.js';
 import { NewBlog } from './components/NewBlog.jsx';
 import { Explore } from './components/Explore.jsx';
 import { MyBlog } from './components/MyBlog.jsx';
+import { BlogPage } from './components/BlogPage.jsx';
 
 export default function App(){
 
@@ -50,7 +51,8 @@ export default function App(){
                 <Route path="/" element={<Main/>}>
                   <Route path='/' element={<Explore/>}/>
                   <Route path='/new-blog' element={<NewBlog/>}/>
-                  <Route path='/my-blog' element={<MyBlog/>}/>
+                  <Route path='/my-blogs' element={<MyBlog/>}/>
+                  <Route path='/blog/:blogId' element={<BlogPage/>} />
                 </Route>
                 <Route path="/about" element={<About/>}/>
                 <Route path="*" element={<PageNotFound/>}/>

@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken")
-const { setUser } = require("../service/auth")
+const { setUser } = require("../service/auth");
+const { UNSAFE_useRouteId } = require("react-router-dom");
 
 async function handleUserSignup(req, res){
   console.log(req.body);
@@ -50,8 +51,56 @@ async function checkAuth(req, res){
   }
 };
 
+async function handleUserInfo(req, res){
+  User.findById(req.params.id)
+  .then(result => {
+    res.status(200).json({
+      user: result
+    })
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({
+      error: err
+    })
+  })
+};
+
+async function handleLikeBlog(req, res){
+  const userId = req.params.userId;
+  const blogId = req.body.id;
+
+  let duplicate = 0;
+
+  await User.findById(userId)
+  .then(result => {
+    const likedPostsLength = result.likedPosts.length;
+
+    for(i=0; i<likedPostsLength; i++){
+      if(result.likedPosts[i].blogId == blogId){
+        duplicate+=1;
+      }
+    }
+  });
+
+  if(duplicate === 0){
+    const updatedUser = await User.findOneAndUpdate(
+      {_id: userId}, 
+      {
+        $addToSet: {
+          likedPosts: {
+            blogId: blogId,
+          }
+        }
+      })
+  }
+  return res.json({"status": "server connected"})
+}
+
 module.exports = {
   handleUserSignup,
   handleUserLogin,
-  checkAuth
+  checkAuth,
+  handleUserInfo,
+  handleLikeBlog
 }

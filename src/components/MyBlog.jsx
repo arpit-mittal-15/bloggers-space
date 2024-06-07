@@ -11,13 +11,11 @@ export function MyBlog(){
 
   useEffect(() => {
     getMyBlogs(userContextData.id).then(blogs => {
-      blogs.map(blog => setMyBlogs(myBlogs => [...myBlogs, [blog.title, blog.content]]))
+      blogs.map(blog => setMyBlogs(myBlogs => [...myBlogs, {title: blog.title, content: blog.content, postedBy: blog.postedBy, likes: blog.likes, comments: blog.comments, createdAt: blog.createdAt, id: blog._id}]))
     })
   }, []);
 
   return (
-
-    
     <div className="h-[93%] w-[96%] overflow-auto flex m-auto flex-col justify-start">
       {myBlogs.map((blog, index) => {
         {if(myBlogs.length == 0){
