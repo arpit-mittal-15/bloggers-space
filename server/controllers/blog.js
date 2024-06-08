@@ -35,10 +35,44 @@ async function handleBlogData(req, res){
       error: 'this blog do not exist'
     })
   })
+};
+
+async function handleNewComment(req, res){
+  const blogId = req.params.blogId;
+
+  const addComment = await Blog.findByIdAndUpdate(blogId, {
+    $push: {
+      comments: {
+        userId: req.body.userId,
+        username: req.body.username,
+        commentContent: req.body.comment,
+        timestamp: new Date(),
+      }
+    }
+  })
+  if(addComment){
+    res.json({"status":"comment added"})
+  }
+  res.json({"status":"server connected"})
+};
+
+async function handleDeleteComment(req, res){
+  const blogId = req.params.blogId;
+  const commentId = req.body.commentId;
+
+  const updatedDoc = await Blog.findByIdAndUpdate(blogId, {
+    $pull: {
+      comments: {_id: commentId}
+    }
+  })
+
+  return res.json({"status" : "comment deleted"})
 }
 
 module.exports = {
   handleNewBlog,
   handleMyBlogs,
-  handleBlogData
+  handleBlogData,
+  handleNewComment,
+  handleDeleteComment
 }

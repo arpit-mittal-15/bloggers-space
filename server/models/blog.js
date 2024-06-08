@@ -15,11 +15,20 @@ const blogSchema = new mongoose.Schema({
   }}],
   comments: [{
     userId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: "users"
+    },
+    username: {
+      type: String,
+      required: true,
     },
     commentContent: {
       type: String,
+      required: true,
+    },
+    timestamp: {
+      type: Number,
+      required: true,
     }
   }],
   postedBy: {

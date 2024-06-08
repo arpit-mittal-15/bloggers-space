@@ -16,7 +16,7 @@ export function MyBlog(){
   }, []);
 
   return (
-    <div className="h-[93%] w-[96%] overflow-auto flex m-auto flex-col justify-start">
+    <div className="max-h-[95%] h-fit w-[96%] mx-auto my-5 overflow-scroll flex flex-col-reverse">
       {myBlogs.map((blog, index) => {
         {if(myBlogs.length == 0){
           return <div>No Blogs</div>
