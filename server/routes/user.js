@@ -1,5 +1,5 @@
 const express = require("express");
-const { handleUserSignup, handleUserLogin, checkAuth, handleUserInfo, handleLikeBlog } = require("../controllers/user");
+const { handleUserSignup, handleUserLogin, checkAuth, handleUserInfo, handleLikeBlog, handleDislikeBlog } = require("../controllers/user");
 
 const router = express.Router();
 
@@ -8,5 +8,6 @@ router.post("/login", handleUserLogin);
 router.post("/auth", checkAuth);
 router.get("/info/:id", handleUserInfo);
 router.patch("/likeBlog/:userId", handleLikeBlog);
+router.patch("/dislikeBlog/:userId", handleDislikeBlog);
 
 module.exports = router;

@@ -7,15 +7,21 @@ const blogSchema = new mongoose.Schema({
   },
   content: {
     type: String,
+    required: true,
   },
-  likes: [{
+  likes: [{ userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users"
+  }}],
+  comments: [{
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users"
+    },
+    commentContent: {
+      type: String,
+    }
   }],
-  comments: {
-    type: Number,
-    default:0
-  },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",

@@ -11,7 +11,7 @@ export function MyBlog(){
 
   useEffect(() => {
     getMyBlogs(userContextData.id).then(blogs => {
-      blogs.map(blog => setMyBlogs(myBlogs => [...myBlogs, {title: blog.title, content: blog.content, postedBy: blog.postedBy, likes: blog.likes, comments: blog.comments, createdAt: blog.createdAt, id: blog._id}]))
+      blogs.map(blog => setMyBlogs(myBlogs => [...myBlogs, {title: blog.title, content: blog.content, postedBy: blog.postedBy, likes: blog.likes, comments: blog.comments.length, createdAt: blog.createdAt, id: blog._id}]))
     })
   }, []);
 

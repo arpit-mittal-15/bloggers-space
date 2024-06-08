@@ -1,7 +1,7 @@
 const User = require("../models/user");
+const Blog = require("../models/blog");
 const jwt = require("jsonwebtoken")
 const { setUser } = require("../service/auth");
-const { UNSAFE_useRouteId } = require("react-router-dom");
 
 async function handleUserSignup(req, res){
   console.log(req.body);
@@ -93,8 +93,54 @@ async function handleLikeBlog(req, res){
           }
         }
       })
-  }
+  };
+
+  let blogDuplicate =0 ;
+
+  await Blog.findById(blogId)
+  .then(result => {
+    const likesLength = result.likes.length;
+
+    for(i=0; i<likesLength; i++){
+      if(result.likes[i].userId == userId){
+        blogDuplicate+=1;
+      }
+    }
+  });
+
+  if(blogDuplicate === 0){
+    const updatedUser = await Blog.findOneAndUpdate(
+      {_id: blogId}, 
+      {
+        $addToSet: {
+          likes: {
+            userId: userId,
+          }
+        }
+      })
+  };
+
   return res.json({"status": "server connected"})
+}
+
+async function handleDislikeBlog(req, res){
+  const userId = req.params.userId;
+  const blogId = req.body.id;
+  await User.findByIdAndUpdate(userId,
+    {$pull: {
+      likedPosts: {
+        blogId: blogId,
+      }
+    }}
+  );
+  const blog = await Blog.findByIdAndUpdate(blogId,
+    {$pull: {
+      likes: {
+        userId: userId,
+      }
+    }}
+  )
+  return res.json({"status": "disliking"})
 }
 
 module.exports = {
@@ -102,5 +148,6 @@ module.exports = {
   handleUserLogin,
   checkAuth,
   handleUserInfo,
-  handleLikeBlog
+  handleLikeBlog,
+  handleDislikeBlog
 }
