@@ -141,7 +141,55 @@ async function handleDislikeBlog(req, res){
     }}
   )
   return res.json({"status": "disliking"})
-}
+};
+
+async function handleFollow(req,res){
+  const userId = req.params.userId;
+  const accToFollow = req.body.accToFollow;
+
+  const updatedUser = await User.findByIdAndUpdate(userId, {
+    $push: {
+      following: {
+        userId: accToFollow
+      }
+    }
+  })
+  const updatedAcc = await User.findByIdAndUpdate(accToFollow, {
+    $push: {
+      followers: {
+        userId: userId
+      }
+    }
+  })
+  if(updatedUser && updatedAcc){
+    return res.json({"status": "record updated"})
+  }
+  return res.json({"status": "server connected"})
+};
+
+async function handleUnfollow(req,res){
+  const userId = req.params.userId;
+  const accToUnfollow = req.body.accToUnfollow;
+
+  const updatedUser = await User.findByIdAndUpdate(userId, {
+    $pull: {
+      following: {
+        userId: accToUnfollow
+      }
+    }
+  })
+  const updatedAcc = await User.findByIdAndUpdate(accToUnfollow, {
+    $pull: {
+      followers: {
+        userId: userId
+      }
+    }
+  })
+  if(updatedUser && updatedAcc){
+    return res.json({"status": "record updated"})
+  }
+  return res.json({"status": "server connected"})
+};
 
 module.exports = {
   handleUserSignup,
@@ -149,5 +197,7 @@ module.exports = {
   checkAuth,
   handleUserInfo,
   handleLikeBlog,
-  handleDislikeBlog
+  handleDislikeBlog,
+  handleFollow,
+  handleUnfollow
 }

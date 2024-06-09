@@ -14,9 +14,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  shortId: {
+    type: String,
+  },
   likedPosts: [{ blogId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "blogs"
+  }}],
+  followers: [{userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users"
+  }}],
+  following: [{userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users"
   }}]
 }, { timestamps: true});
 

@@ -20,6 +20,11 @@ async function handleMyBlogs(req, res){
   return res.json({blogs})
 }
 
+async function handleAllBlogs(req, res){
+  const blogs = await Blog.find({});
+  return res.json({blogs})
+}
+
 async function handleBlogData(req, res){
   Blog.findById(req.params.blogId)
   .then(result => {
@@ -40,7 +45,7 @@ async function handleBlogData(req, res){
 
 async function handleNewComment(req, res){
   const blogId = req.params.blogId;
-  
+
   const addComment = await Blog.findByIdAndUpdate(blogId, {
     $push: {
       comments: {
@@ -73,6 +78,7 @@ async function handleDeleteComment(req, res){
 module.exports = {
   handleNewBlog,
   handleMyBlogs,
+  handleAllBlogs,
   handleBlogData,
   handleNewComment,
   handleDeleteComment
