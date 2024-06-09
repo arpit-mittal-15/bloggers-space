@@ -11,7 +11,7 @@ const blogRoute = require("./routes/blog")
 const app = express();
 app.use(function(req, res, next) {
   // res.header("Access-Control-Allow-Origin", "*");
-  const allowedOrigins = ['http://localhost:3000', 'http://gamebrag.onrender.com', 'https://bloggers-space.vercel.app/'];
+  const allowedOrigins = ['http://localhost:3000', 'http://gamebrag.onrender.com', 'https://bloggers-space.vercel.app'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
        res.setHeader('Access-Control-Allow-Origin', origin);
@@ -33,4 +33,4 @@ app.use(cookieParser())
 app.use("/api/user", userRoute)
 app.use("/api/blog", blogRoute)
 
-app.listen(PORT, ()=> console.log("Server started.."))
+app.listen(PORT, ()=> console.log("Server started again.."))
