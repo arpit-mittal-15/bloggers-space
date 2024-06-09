@@ -9,12 +9,12 @@ function setUser(user){
     name: user.name,
     shortbio: user.shortbio,
     followers: user.followers,
-  }, secret)
+  }, 'myblogspace')
 };
 
 function getUser(token){
   if(!token) return null;
-  return jwt.verify(token, secret);
+  return jwt.verify(token, 'myblogspace');
 };
 
 module.exports = {
