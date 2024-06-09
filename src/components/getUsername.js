@@ -1,6 +1,6 @@
 export function getUsername(userId){
   return new Promise((resolve, reject) => {
-    fetch(`http://localhost:8000/api/user/info/${userId}`, {
+    fetch(`https://bloggers-space.onrender.com/api/user/info/${userId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

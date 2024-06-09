@@ -1,7 +1,7 @@
 export function createNewBlog(blogData){
 
   return new Promise((resolve, reject) => {
-    fetch("http://localhost:8000/api/blog/new-blog", {
+    fetch("https://bloggers-space.onrender.com/api/blog/new-blog", {
       method:"POST",
       headers:{
         'Content-Type': 'application/json',

@@ -1,6 +1,6 @@
 export function getMyBlogs(userId){
   return new Promise((resolve, reject) => {
-    fetch(`http://localhost:8000/api/blog/my-blogs/${userId}`, {
+    fetch(`https://bloggers-space.onrender.com/api/blog/my-blogs/${userId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -16,7 +16,7 @@ export function getMyBlogs(userId){
 
 export function getAllBlogs(){
   return new Promise((resolve, reject) => {
-    fetch(`http://localhost:8000/api/blog/all-blogs`, {
+    fetch(`https://bloggers-space.onrender.com/api/blog/all-blogs`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

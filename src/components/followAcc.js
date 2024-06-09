@@ -1,6 +1,6 @@
 export function followAcc(userId, accToFollow){
   return new Promise((resolve, reject) => {
-    fetch(`http://localhost:8000/api/user/followAcc/${userId}`, {
+    fetch(`https://bloggers-space.onrender.com/api/user/followAcc/${userId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -15,7 +15,7 @@ export function followAcc(userId, accToFollow){
 
 export function unfollowAcc(userId, accToUnfollow){
   return new Promise((resolve, reject) => {
-    fetch(`http://localhost:8000/api/user/unfollowAcc/${userId}`, {
+    fetch(`https://bloggers-space.onrender.com/api/user/unfollowAcc/${userId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'

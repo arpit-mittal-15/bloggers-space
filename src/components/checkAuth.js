@@ -12,7 +12,7 @@ export function checkAuth(uid){
     }
     const cookie = {"uid": token};
     
-    fetch('http://localhost:8000/api/user/auth',{
+    fetch('https://bloggers-space.onrender.com/api/user/auth',{
       method:'POST',
       headers:{
         'Content-Type': 'application/json'

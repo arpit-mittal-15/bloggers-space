@@ -1,6 +1,6 @@
 export function likeBlog(userId, blogId){
   return new Promise((resolve, reject) => {
-    fetch(`http://localhost:8000/api/user/likeBlog/${userId}`, {
+    fetch(`https://bloggers-space.onrender.com/api/user/likeBlog/${userId}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
@@ -15,7 +15,7 @@ export function likeBlog(userId, blogId){
 
 export function dislikeBlog(userId, blogId){
   return new Promise((resolve, reject) => {
-    fetch(`http://localhost:8000/api/user/dislikeBlog/${userId}`, {
+    fetch(`https://bloggers-space.onrender.com/api/user/dislikeBlog/${userId}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'

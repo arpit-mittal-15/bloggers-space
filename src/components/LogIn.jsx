@@ -17,7 +17,7 @@ export function LogIn(){
   const handleSubmit = (e) => {
     e.preventDefault();
     if(validateUserDetails()){
-      fetch('http://localhost:8000/api/user/login',{
+      fetch('https://bloggers-space.onrender.com/api/user/login',{
         method:'POST',
         headers:{
           'Content-Type': 'application/json'

@@ -1,6 +1,6 @@
 export function getBlogData(blogId){
   return new Promise((resolve, reject) => {
-    fetch(`http://localhost:8000/api/blog/info/${blogId}`,{
+    fetch(`https://bloggers-space.onrender.com/api/blog/info/${blogId}`,{
       method: 'GET',
       headers:{
         'Content-Type': 'application/json'
