@@ -83,7 +83,7 @@ export function UserProfile(){
         </div>
         <div className="px-[30px] pb-[15px]">
           <div className="font-semibold text-2xl mb-1">{userAccountDetails.name}</div>
-          <div className="text-lg mb-2">{userAccountDetails.shortbio}</div>
+          <div className="text-lg mb-2">{userAccountDetails.shortbio?userAccountDetails.shortbio:"shortbio"}</div>
           <div className="grid grid-flow-row grid-cols-3 justify-center items-center mt-7">
             <div className="flex flex-col w-fit items-center pl-3">
               <span className="text-3xl">{myBlogs.length}</span>
