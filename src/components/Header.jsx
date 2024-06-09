@@ -52,7 +52,7 @@ export function Header(){
                 setTimeout(() => {setProfileOptionsVisible(false)}, 200)
               }}>
                 <div className="border-b-2 pb-3 flex flex-col gap-2">
-                  <Link to={`/profile/${userContextData.id}`}><div>View Profile</div></Link>
+                  <div onClick={() => {location.assign(`/profile/${userContextData.id}`)}}>View Profile</div>
                   <Link to="/my-blogs"><div>Blogs and activities</div></Link>
                 </div>
                 <div className="border-b-2 pb-3 flex flex-col gap-2">
