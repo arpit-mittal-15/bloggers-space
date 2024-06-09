@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import { First } from './pages/First.jsx'
 import { Home } from './pages/Home.jsx'
-import { About } from './components/About.jsx'
 import { SignIn } from "./components/SignIn.jsx";
 import { LogIn } from "./components/LogIn.jsx";
 import { Index } from "./components/Index.jsx";
@@ -26,7 +25,9 @@ export default function App(){
   const [user, setUser] = useState({
     id:0,
     name:"",
-    email:""
+    email:"",
+    bio: "",
+    followers: []
   })
   const {setUserData} = useContext(UserContext);
 
@@ -36,8 +37,8 @@ export default function App(){
       else{
         setLoggedIn(true);
         const userDetails = JSON.parse(value);
-        setUser({id: userDetails._id, name: userDetails.name, email: userDetails.email})
-        setUserData({id: userDetails._id, name: userDetails.name, email: userDetails.email})
+        setUser({id: userDetails._id, name: userDetails.name, email: userDetails.email, bio: userDetails.shortbio, followers: userDetails.followers})
+        setUserData({id: userDetails._id, name: userDetails.name, email: userDetails.email, bio: userDetails.shortbio, followers: userDetails.followers})
       }
     });
   },[])

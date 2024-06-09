@@ -14,11 +14,11 @@ export function Sidebar(){
         </div>
         <div id="name-short-bio" className="relative top-[40px] text-center">
           <div className="font-semibold text-xl mb-1">{userContextData.name}</div>
-          <div className="text-sm">"shortbio"</div>
+          <div className="text-sm">{userContextData.bio?userContextData.bio:"shortbio"}</div>
         </div>
         <div id="followers" className="relative top-[40px] border-y-[1px] border-red-500 px-4 py-3 mt-5 flex justify-between text-sm">
           <span>Followers</span>
-          <span className="font-semibold">20</span>
+          <span className="font-semibold">{userContextData.followers?userContextData.followers:"0"}</span>
         </div>
         <div className="relative top-[40px] border-red-500 py-3 px-4 flex justify-between text-sm">
           <span>Your favs</span>
