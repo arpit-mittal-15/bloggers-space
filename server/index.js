@@ -9,14 +9,12 @@ const userRoute = require("./routes/user")
 const blogRoute = require("./routes/blog")
 
 const app = express();
-app.use(cors());
-
 const PORT = process.env.PORT;
 
 connectToMongoDB(process.env.MONGO_URL)
 .then(()=> console.log("mongoDB connected"));
 
-
+app.use(cors({origin:"https://bloggers-space.vercel.app"}));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 app.use(cookieParser())
