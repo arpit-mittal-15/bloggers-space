@@ -44,7 +44,7 @@ export function BlogPage(){
     if(!liked){
       likeBlog(userContextData.id, blogId);
       setLiked(true);
-      // setBlogData((current) => ({...current, likes: current.likes.push({userId: '', _id:''})}))
+      // setBlogData((current) => ({...current, likes: blogData.likes.push({userId: '', _id:''})}))
     }
     else{
       dislikeBlog(userContextData.id, blogId);
@@ -67,7 +67,10 @@ export function BlogPage(){
     if(newComment.comment === ""){
       document.getElementById("commentInput").classList.add("border-red-500")
     }
-    else{addComment(newComment, blogId)};
+    else{
+      addComment(newComment, blogId);
+      setNewComment((current) => ({...current, comment: ""}))
+    };
   }
   
 

@@ -10,11 +10,6 @@ export function LogIn(){
     password: "",
   })
 
-  const fetchLogin = () => {
-    document.cookie = "username=John doe";
-    location.assign("/")
-  }
-
   const validateUserDetails=()=>{
     return true;
   }

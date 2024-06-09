@@ -17,7 +17,11 @@ export function BlogComments({commentDetails}){
   let diff = todayDate - commentDate;
   let dateVariable = "s"
 
-  if(diff > 864000000){
+  if(diff > 604800000){
+    diff = Math.round(diff/604800000);
+    dateVariable = "w"
+  }
+  else if(diff > 86400000){
     diff = Math.round(diff/86400000);
     dateVariable = "d"
   }

@@ -18,6 +18,7 @@ import { NewBlog } from './components/NewBlog.jsx';
 import { Explore } from './components/Explore.jsx';
 import { MyBlog } from './components/MyBlog.jsx';
 import { BlogPage } from './components/BlogPage.jsx';
+import { UserProfile } from './components/UserProfile.jsx';
 
 export default function App(){
 
@@ -54,7 +55,7 @@ export default function App(){
                   <Route path='/my-blogs' element={<MyBlog/>}/>
                   <Route path='/blog/:blogId' element={<BlogPage/>} />
                 </Route>
-                <Route path="/about" element={<About/>}/>
+                <Route path="/profile/:userId" element={<UserProfile/>}/>
                 <Route path="*" element={<PageNotFound/>}/>
               </Route>
             </Routes>

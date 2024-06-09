@@ -6,7 +6,7 @@ export function Home(){
   return(
     <>
       <div className="h-screen grid grid-flow-row grid-rows-[55px_auto_35px]">
-        <Header/>
+        <Header className="z-10"/>
         <Outlet/>
         <Footer/>
       </div>

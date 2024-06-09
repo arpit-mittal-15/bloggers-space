@@ -16,10 +16,10 @@ export function MyBlogsBlog({blogContent}){
   },[]);
 
   return (
-    <div className="p-4 mb-5 bg-white rounded-lg relative">
+    <div className="p-4 pb-3 mb-5 bg-white rounded-lg">
       <div id="myBlogsBlogTitle" className="text-2xl font-semibold mb-2">{blogContent.title}</div>
-      <div id="myBlogsBlogContent" className="max-h-[110px] text-lg overflow-hidden mb-3">{blogContent.content}</div>
-      <div className="relative bottom-[-7px] text-sm flex justify-between">
+      <div id="myBlogsBlogContent" className="max-h-[110px] text-lg overflow-hidden mb-5">{blogContent.content}</div>
+      <div className="text-sm flex justify-between">
         <div id="blogDetails" className="flex items-center gap-5">
           <span className="flex align-middle gap-2">
             <svg height={17} width={17} viewBox="0 0 512 512" className="inline"><path fill="red" fillOpacity={.9} d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>{blogContent.likes.length}

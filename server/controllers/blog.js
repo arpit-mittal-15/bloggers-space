@@ -1,4 +1,5 @@
-const Blog = require("../models/blog")
+const Blog = require("../models/blog");
+const mongoose = require("mongoose")
 
 async function handleNewBlog(req, res){
   const body = req.body;
@@ -39,7 +40,7 @@ async function handleBlogData(req, res){
 
 async function handleNewComment(req, res){
   const blogId = req.params.blogId;
-
+  
   const addComment = await Blog.findByIdAndUpdate(blogId, {
     $push: {
       comments: {
@@ -51,9 +52,9 @@ async function handleNewComment(req, res){
     }
   })
   if(addComment){
-    res.json({"status":"comment added"})
+    return res.json({"status":"comment added"})
   }
-  res.json({"status":"server connected"})
+  return res.json({"status":"server connected"})
 };
 
 async function handleDeleteComment(req, res){
