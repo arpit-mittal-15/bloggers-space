@@ -9,7 +9,7 @@ const userRoute = require("./routes/user")
 const blogRoute = require("./routes/blog")
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT;
 
 connectToMongoDB(process.env.MONGO_URL)
 .then(()=> console.log("mongoDB connected"));
