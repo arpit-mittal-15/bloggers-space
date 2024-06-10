@@ -3,7 +3,7 @@ import { UserContext } from "./hooks/UserContext";
 import { deleteComment } from "./addComment";
 import { Link, useParams } from "react-router-dom";
 
-export function BlogComments({commentDetails}){
+export function BlogComments({commentDetails, blogData, setBlogData}){
 
   const userContextData = useContext(UserContext);
   const {blogId} = useParams();
@@ -11,7 +11,7 @@ export function BlogComments({commentDetails}){
   const [myComment, setMyComment] = useState(false)
   const [optionVisible, setOptionVisible] = useState(false)
 
-  const commentDate = commentDetails.timestamp;
+  const commentDate = commentDetails.details.timestamp;
   const todayDate = Date.now();
 
   let diff = todayDate - commentDate;
@@ -43,7 +43,7 @@ export function BlogComments({commentDetails}){
   }
 
   useEffect(() => {
-    if(userContextData.id == commentDetails.userId){
+    if(userContextData.id == commentDetails.details.userId){
       setMyComment(true)
     }
   },[])
@@ -53,8 +53,16 @@ export function BlogComments({commentDetails}){
   }
 
   const handleDeleteComment = (e) => {
-    console.log("delete button clicked");
-    deleteComment(commentDetails._id, blogId)
+    deleteComment(commentDetails.details._id, blogId).then(value => {
+      if(value === true){
+        const index = commentDetails.blogData.findIndex(x => x._id === commentDetails.details._id);
+        let commentsBefore = commentDetails.blogData.slice(0,index);
+        let commentsAfter = commentDetails.blogData.slice(index+1);
+        let remainingComments = commentsBefore.concat(commentsAfter);
+        commentDetails.setBlogData((current) => ({...current, comments: remainingComments}))
+      }
+    })
+
   }
 
   return (
@@ -62,7 +70,7 @@ export function BlogComments({commentDetails}){
       <div className="text-sm pb-1 flex flex-row justify-between">
         <div className="flex flex-row gap-2 items-center">
           <span className="font-semibold">
-            <Link to={`/profile/${commentDetails.userId}`}>{commentDetails.username}</Link>
+            <Link to={`/profile/${commentDetails.details.userId}`}>{commentDetails.details.username}</Link>
           </span>
           <span>
             <svg height={5} width={5} viewBox="0 0 512 512"><path fill="grey" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/></svg>
@@ -80,7 +88,7 @@ export function BlogComments({commentDetails}){
           </button>
         </div>
       </div>
-      <div className="mb-2 text-lg">{commentDetails.commentContent}</div>
+      <div className="mb-2 text-lg">{commentDetails.details.commentContent}</div>
       
     </div>
   )

@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { UserContext } from "./hooks/UserContext"
+import { Link } from "react-router-dom";
 
 export function Sidebar(){
 
@@ -15,7 +16,7 @@ export function Sidebar(){
           </div>
         </div>
         <div id="name-short-bio" className="relative top-[40px] text-center">
-          <div className="font-semibold text-xl mb-1">{userContextData.name}</div>
+          <div className="font-semibold text-xl mb-1"><Link to={`/profile/${userContextData.id}`}>{userContextData.name}</Link></div>
           <div className="text-sm">{userContextData.bio?userContextData.bio:"shortbio"}</div>
         </div>
         <div id="followers" className="relative top-[40px] border-y-[1px] border-red-500 px-4 py-3 mt-5 flex justify-between text-sm">

@@ -120,7 +120,7 @@ export function BlogPage(){
         </div>
         <div className="flex flex-col-reverse gap-3">
           {blogData.comments?.map((commentDetails, index) => {
-            return <BlogComments key={index} commentDetails={commentDetails}/>
+            return <BlogComments key={index} commentDetails={{details : commentDetails, blogData: blogData.comments, setBlogData}}/>
           })}
         </div>
       </div>

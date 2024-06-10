@@ -43,7 +43,6 @@ export function UserProfile(){
   }, []);
 
   useEffect(() => {
-    console.log(userAccountDetails.followers)
     const checkFollow = () => {
       let ifFollow = userAccountDetails.followers?.find((user) => (user.userId === userContextData.id));
       if(ifFollow){
