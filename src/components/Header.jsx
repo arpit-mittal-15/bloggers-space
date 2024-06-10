@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { UserContext } from "./hooks/UserContext"
 
@@ -18,7 +18,7 @@ export function Header(){
         + new Date(0).toUTCString(); 
     }
     location.assign("/")
-  } 
+  };
 
   return(
     <header className="box-border bg-red-500 text-white px-10 flex flex-row flex-nowrap justify-between items-center">
@@ -28,14 +28,14 @@ export function Header(){
         <nav className="flex flex-row gap-2 items-center">
           <Link to="/new-blog">
             <div className="font-semibold flex gap-2">
-            <span className="h-[30px] border-[1px] rounded-full flex justify-center items-center p-3 py-4">New +</span>
+            <span className="h-[30px] border-[1px] rounded-full flex justify-center items-center p-3 py-4 hover:scale-105 transition-all duration-500">New +</span>
             </div>
           </Link>
           <ul className="flex flex-row gap-5 text-sm px-5">
-            <Link to="/"><li>Home</li></Link>
-            <Link to="/my-blogs"><li>Blogs</li></Link>
-            <li>Msgs</li>
-            <li>Notif</li>
+            <Link to="/"><li id="headerHome">Home</li></Link>
+            <Link to="/my-blogs"><li id="headerMyBlogs">My Blogs</li></Link>
+            <li onClick={() => alert("under progress")}>Msgs</li>
+            <li onClick={() => alert("under progress")}>Notif</li>
           </ul>
             <div className="bg-white text-red-500 flex flex-row py-1 px-3 gap-3 rounded-full items-center justify-between relative cursor-pointer" onMouseEnter={() => setProfileOptionsVisible(true)} onMouseLeave={() => {
               setTimeout(() => {
@@ -56,8 +56,8 @@ export function Header(){
                   <Link to="/my-blogs"><div>Blogs and activities</div></Link>
                 </div>
                 <div className="border-b-2 pb-3 flex flex-col gap-2">
-                  <div>Settings(non working)</div>
-                  <div>Help(non working)</div>
+                  <div className="text-xs">Settings(under progress)</div>
+                  <div>Help(under progress)</div>
                 </div>
                 <div className="text-red-500" onClick={deleteCookies}>Log out</div>
               </span>

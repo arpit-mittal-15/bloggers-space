@@ -13,6 +13,8 @@ export function Explore(){
     getAllBlogs().then(blogs => {
       blogs.map(blog => setMyBlogs(myBlogs => [...myBlogs, {title: blog.title, content: blog.content, postedBy: blog.postedBy, likes: blog.likes, comments: blog.comments.length, createdAt: blog.createdAt, id: blog._id}]))
     })
+    document.getElementById("headerMyBlogs").classList.remove("border-b-2");
+    document.getElementById("headerHome").classList.add("border-b-2");
   }, []);
 
   return (
