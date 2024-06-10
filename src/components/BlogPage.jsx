@@ -72,9 +72,11 @@ export function BlogPage(){
       document.getElementById("commentInput").classList.add("border-red-500")
     }
     else{
-      addComment(newComment, blogId).then(addedComment => console.log(addedComment));
+      addComment(newComment, blogId).then(addedComment => {
+        console.log(addedComment);
+        blogData.comments.push(addedComment)
+      });
       setNewComment((current) => ({...current, comment: ""}));
-      console.log(blogData.comments)
     };
   }
   

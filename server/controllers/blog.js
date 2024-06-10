@@ -56,8 +56,10 @@ async function handleNewComment(req, res){
       }
     }
   })
-  if(addComment){
-    return res.json({addComment})
+
+  const addedComment = await Blog.findById(blogId, {comments: 1})
+  if(addedComment){
+    return res.json({addedComment})
   }
   return res.json({"status":"server connected"})
 };

@@ -10,7 +10,7 @@ export function addComment(commentData, blogId){
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        resolve(data)
+        resolve(data.addComment)
       })
       .catch(err => console.log(err))
   })
