@@ -8,7 +8,7 @@ export function followAcc(userId, accToFollow){
       body: JSON.stringify({"accToFollow": accToFollow})
     })
       .then((res) => res.json())
-      .then(data => console.log(data))
+      .then(data => data)
       .catch(err => console.log(err))
   })
 }
@@ -23,7 +23,7 @@ export function unfollowAcc(userId, accToUnfollow){
       body: JSON.stringify({"accToUnfollow": accToUnfollow})
     })
       .then((res) => res.json())
-      .then(data => console.log(data))
+      .then(data => data)
       .catch(err => console.log(err))
   })
 }

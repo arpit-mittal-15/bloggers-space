@@ -8,7 +8,7 @@ export function likeBlog(userId, blogId){
       body: JSON.stringify({"id": blogId})
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => data)
       .catch(err => console.log(err))
   })
 }
@@ -23,7 +23,7 @@ export function dislikeBlog(userId, blogId){
       body: JSON.stringify({"id": blogId})
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => data)
       .catch(err => console.log(err))
   })
 }

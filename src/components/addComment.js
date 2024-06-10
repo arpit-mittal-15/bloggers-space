@@ -8,7 +8,7 @@ export function addComment(commentData, blogId){
       body: JSON.stringify(commentData)
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => data)
       .catch(err => console.log(err))
   })
 };
@@ -23,7 +23,7 @@ export function deleteComment(commentId, blogId){
       body: JSON.stringify({"commentId" : commentId})
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => data)
       .catch(err => console.log(err))
   })
 }
