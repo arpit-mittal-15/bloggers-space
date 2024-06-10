@@ -10,7 +10,7 @@ export function addComment(commentData, blogId){
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        resolve(data.addComment)
+        resolve(data.addedComment)
       })
       .catch(err => console.log(err))
   })
@@ -26,7 +26,9 @@ export function deleteComment(commentId, blogId){
       body: JSON.stringify({"commentId" : commentId})
     })
       .then(res => res.json())
-      .then(data => data)
+      .then(data => {
+        resolve(true)
+      })
       .catch(err => console.log(err))
   })
 }

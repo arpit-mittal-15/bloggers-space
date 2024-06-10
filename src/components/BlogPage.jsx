@@ -73,8 +73,8 @@ export function BlogPage(){
     }
     else{
       addComment(newComment, blogId).then(addedComment => {
-        console.log(addedComment);
-        blogData.comments.push(addedComment)
+        let allComments = addedComment.comments;
+        setBlogData((current) => ({...current, comments: allComments}))
       });
       setNewComment((current) => ({...current, comment: ""}));
     };

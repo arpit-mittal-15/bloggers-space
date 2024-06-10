@@ -37,6 +37,10 @@ export function BlogComments({commentDetails}){
     diff= Math.round(diff/1000);
     dateVariable = "s"
   }
+  else{
+    diff = "";
+    dateVariable = "now"
+  }
 
   useEffect(() => {
     if(userContextData.id == commentDetails.userId){
