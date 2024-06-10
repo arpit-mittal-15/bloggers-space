@@ -20,7 +20,7 @@ export function Sidebar(){
         </div>
         <div id="followers" className="relative top-[40px] border-y-[1px] border-red-500 px-4 py-3 mt-5 flex justify-between text-sm">
           <span>Followers</span>
-          <span className="font-semibold">{userContextData.followers?userContextData.followers.length:"0"}</span>
+          <span className="font-semibold">{userContextData.followers?.length}</span>
         </div>
         <div className="relative top-[40px] border-red-500 py-3 px-4 flex justify-between text-sm">
           <span>Your favs</span>

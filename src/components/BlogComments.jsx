@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./hooks/UserContext";
 import { deleteComment } from "./addComment";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export function BlogComments({commentDetails}){
 
@@ -57,7 +57,9 @@ export function BlogComments({commentDetails}){
     <div className="border-b-[1px] mb-1 pl-2">
       <div className="text-sm pb-1 flex flex-row justify-between">
         <div className="flex flex-row gap-2 items-center">
-          <span className="font-semibold">{commentDetails.username}</span>
+          <span className="font-semibold">
+            <Link to={`/profile/${commentDetails.userId}`}>{commentDetails.username}</Link>
+          </span>
           <span>
             <svg height={5} width={5} viewBox="0 0 512 512"><path fill="grey" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/></svg>
           </span>

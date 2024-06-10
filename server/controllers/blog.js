@@ -57,7 +57,7 @@ async function handleNewComment(req, res){
     }
   })
   if(addComment){
-    return res.json({"status":"comment added"})
+    return res.json({addComment})
   }
   return res.json({"status":"server connected"})
 };

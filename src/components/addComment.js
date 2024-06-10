@@ -8,7 +8,10 @@ export function addComment(commentData, blogId){
       body: JSON.stringify(commentData)
     })
       .then(res => res.json())
-      .then(data => data)
+      .then(data => {
+        console.log(data);
+        resolve(data)
+      })
       .catch(err => console.log(err))
   })
 };
