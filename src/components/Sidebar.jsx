@@ -10,7 +10,9 @@ export function Sidebar(){
     <div className="box-border m-5 rounded-lg">
       <div id="card-profile" className="w-full h-[280px] bg-white rounded-lg">
         <div id="card-profile-img-bg" className="h-[80px] w-full bg-red-500 rounded-[10px_10px_0px_0px]">
-          <div className="h-[70px] w-[70px] rounded-full bg-[url('./assets/index-background.jpeg')] bg-cover ring-2 ring-white m-auto relative bottom-[-40px]"></div>
+          <div className="h-[70px] w-[70px] bg-slate-200 rounded-full ring-2 ring-white m-auto relative bottom-[-40px] flex justify-center items-center">
+          <svg height={30} width={30} viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+          </div>
         </div>
         <div id="name-short-bio" className="relative top-[40px] text-center">
           <div className="font-semibold text-xl mb-1">{userContextData.name}</div>
@@ -18,7 +20,7 @@ export function Sidebar(){
         </div>
         <div id="followers" className="relative top-[40px] border-y-[1px] border-red-500 px-4 py-3 mt-5 flex justify-between text-sm">
           <span>Followers</span>
-          <span className="font-semibold">{userContextData.followers?userContextData.followers:"0"}</span>
+          <span className="font-semibold">{userContextData.followers?userContextData.followers.length:"0"}</span>
         </div>
         <div className="relative top-[40px] border-red-500 py-3 px-4 flex justify-between text-sm">
           <span>Your favs</span>

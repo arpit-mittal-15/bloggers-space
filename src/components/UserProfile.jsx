@@ -70,10 +70,10 @@ export function UserProfile(){
       <div className="max-h-[90%] min-w-[400px] max-w-[850px] w-[65vw] m-5 bg-white rounded-lg overflow-scroll">
         <div className="h-[280px] w-full">
           <div>
-            <img src="../src/assets/index-background.jpeg" className="w-full h-[200px] rounded-[10px_10px_0px_0px]" />
+            <img src="https://imgs.search.brave.com/28szojQkAFUO3UjNIxySN3CcH1kldouusV2DEqmlv14/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9teS1i/bG9nLXdoaXRlLW5v/dGVib29rLXJlY29y/ZGluZy01NTM5MTky/Ni5qcGc" className="h-[200px] w-full bg-cover"/>
           </div>
-          <div className="relative">
-            <img src="../src/assets/index-background.jpeg" className="absolute w-[140px] h-[140px] rounded-full bottom-[-50px] left-[30px] ring-4 ring-white"/>
+          <div className="w-[100px] h-[100px] rounded-full flex justify-center items-center">
+            <svg height={30} width={30} viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
           </div>
           <div className="relative float-right right-5 top-5">
             {myAcc && <button className="px-10 p-2 bg-red-500 text-white rounded-full hover:scale-105">Edit</button>}

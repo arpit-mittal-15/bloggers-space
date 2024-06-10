@@ -77,7 +77,7 @@ export function BlogPage(){
   return(
     <div className="max-h-[94%] h-fit w-[95%] flex flex-col justify-self-center bg-white rounded-xl my-5 overflow-scroll scroll-mb-3">
       <div className="h-[200px]">
-        <img src="../src/assets/index-background.jpeg" alt="bg-image" className="h-full w-full rounded-[10px_10px_0px_0px]"/>
+        <img src="https://imgs.search.brave.com/cHxstcx3lDm2fYz1dU0V7PO69DT2GcfK2WONQIr1GqE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzBkLzg0/LzhjLzBkODQ4YzMy/ZDExODEwMTFmYmE5/ZmVjMThlNDYxNTMx/LmpwZw" alt="bg-image" className="h-full w-full rounded-[10px_10px_0px_0px]"/>
       </div>
       <div>
         <div className="font-semibold text-3xl m-3 mb-0">{blogData.title}</div>
